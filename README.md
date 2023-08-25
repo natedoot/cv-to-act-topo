@@ -41,7 +41,7 @@ If VSCode does not prompt you after intially openning the project directory, fol
 
 ![reopen-in-devcontainer](./media/reopen-in-devcontainer.png)
 
-1. Execute the Script Inside the Container:
+4. Execute the Script Inside the Container:
 Run the script with your CloudVision server details and any other required arguments. Here's an example:
 ```
 python scripts/main_script.py --apiserver apiserver.arista.io:443 --auth=token,auth/token.tok --pattern <regex of devices to match>
