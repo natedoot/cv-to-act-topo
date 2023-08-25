@@ -1,0 +1,9 @@
+{
+    "name": "CloudVision to ACT Topology",
+    "dockerFile": "Dockerfile",
+    "context": "..",
+    "runArgs": [ "-v", "cv-to-act-topo:/app" ],
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    }
+}
