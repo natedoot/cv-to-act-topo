@@ -33,13 +33,15 @@ Open the project folder in VS Code.
 3. Reopen in Container:
 VSCode should identify the devcontainer files and prompt you to "Reopen in Container"
 - Click "Reopen in Container" button in the lower right corner of the VS Code window.
+
 ![reopen-in-devcontainer-prompt](./media/reopen-in-devcontainer-prompt.png)
 
 If VSCode does not prompt you after intially openning the project directory, follow these steps:
 - Open the Command Pallet (press F1) and type `Dev Containers` -> Select `Dev Containers: Reopen in Container`
+
 ![reopen-in-devcontainer](./media/reopen-in-devcontainer.png)
 
-4. Execute the Script Inside the Container:
+1. Execute the Script Inside the Container:
 Run the script with your CloudVision server details and any other required arguments. Here's an example:
 ```
 python scripts/main_script.py --apiserver apiserver.arista.io:443 --auth=token,auth/token.tok --pattern <regex of devices to match>
