@@ -21,7 +21,9 @@ Service accounts can be created from the Settings page where a service token can
 
 Create a file called `token.tok` and place it in the `auth/` directory, then paste the contents of the service account token into the file.
 ## VSCode/Devcontainer Usage
-
+??? note "Is Docker Running?"
+   Ensure Docker is running prior to openning devcontainer, otherwise devcontainer build will fail
+   
 1. **Clone the Repository**:
 ```
    git clone https://github.com/natedoot/cv-to-act-topo.git
