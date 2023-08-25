@@ -51,9 +51,28 @@ def get_lldp_neighbors(client, device_id):
     return result
 
 def create_yaml_topology(switches, lldp_data):
+    defaults = []
     nodes = []
     links = []
     seen_connections = set()
+
+    default_variables = {
+        'veos': {
+            'username': 'cvpadmin',
+            'password': 'arista123',
+        },
+        'generic': {
+            'username': 'cvpadmin',
+            'password': 'arista123',
+            'version': 'Rocky-8.5',
+        },
+        'cvp': {
+            'username': 'root',
+            'password': 'cvproot',
+            'version': '2022.3.1',
+            'instance': 'singlenode',
+        },
+    }
     for serial, switch in switches.items():
         hostname = switch["hostname"]
         nodes.append({
@@ -81,9 +100,10 @@ def create_yaml_topology(switches, lldp_data):
         "nodes": nodes,
         "links": links,
     }
+    final_topology = {**default_variables, **topology}
 
     with open('topology.yaml', 'w') as file:
-        yaml.dump(topology, file, default_flow_style=False)
+        yaml.dump(final_topology, file, default_flow_style=False)
 
 
 def main(apiserver_addr, token=None, certs=None, ca=None, key=None, pattern=None):

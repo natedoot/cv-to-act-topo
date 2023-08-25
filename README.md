@@ -83,7 +83,7 @@ Next, you need to install the required packages. You can do this using the follo
 pip install cloudvision grpcio pyyaml
 ```
 5. Run the Script
-Now, navigate to the directory where the script is located and run it with the required arguments:
+Now, run the `main_script.py` with the required arguments:
 ```
 python scripts/main_script.py --apiserver apiserver.arista.io:443 --auth=token,auth/token.tok --pattern <regex of devices to match>
 ```
