@@ -31,18 +31,24 @@ Create a file called `token.tok` and place it in the `auth/` directory, then pas
 Open the project folder in VS Code.
 
 3. Reopen in Container:
-Click on the "Reopen in Container" button in the lower left corner of the VS Code window.
+VSCode should identify the devcontainer files and prompt you to "Reopen in Container"
+- Click "Reopen in Container" button in the lower right corner of the VS Code window.
+![reopen-in-devcontainer-prompt](./media/reopen-in-devcontainer-prompt.png)
+
+If VSCode does not prompt you after intially openning the project directory, follow these steps:
+- Open the Command Pallet (press F1) and type `Dev Containers` -> Select `Dev Containers: Reopen in Container`
+![reopen-in-devcontainer](./media/reopen-in-devcontainer.png)
 
 4. Execute the Script Inside the Container:
 Run the script with your CloudVision server details and any other required arguments. Here's an example:
 ```
-python scripts/main_script.py --apiserver apiserver.cv-staging.corp.arista.io:443 --auth=token,auth/token.tok --pattern <regex of devices to match>
+python scripts/main_script.py --apiserver apiserver.arista.io:443 --auth=token,auth/token.tok --pattern <regex of devices to match>
 ```
 Adjust the arguments according to your setup.
 
 Example:
 ```
-python scripts/main_script.py --apiserver apiserver.cv-staging.corp.arista.io:443 --auth=token,auth/token.tok --pattern dc1-
+python scripts/main_script.py --apiserver apiserver.arista.io:443 --auth=token,auth/token.tok --pattern dc1-
 ```
 ## Python virtual environment Usage
 
@@ -83,5 +89,5 @@ Adjust the arguments according to your setup.
 
 Example:
 ```
-python scripts/main_script.py --apiserver apiserver.cv-staging.corp.arista.io:443 --auth=token,auth/token.tok --pattern dc1-
+python scripts/main_script.py --apiserver apiserver.arista.io:443 --auth=token,auth/token.tok --pattern dc1-
 ```
