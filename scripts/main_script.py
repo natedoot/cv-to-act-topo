@@ -11,7 +11,7 @@ def get_active_switches(client, pattern=None):
     for batch in client.get(query):
         for notif in batch["notifications"]:
             for serial, details in notif["updates"].items():
-                if details["status"] == "active" and (pattern is None or re.match(pattern, details["hostname"])):
+                if details["deviceType"] == "EOS" and details["status"] == "active" and (pattern is None or re.match(pattern, details["hostname"])):
                     switches[serial] = details
     return switches
 
@@ -51,7 +51,6 @@ def get_lldp_neighbors(client, device_id):
     return result
 
 def create_yaml_topology(switches, lldp_data):
-    defaults = []
     nodes = []
     links = []
     seen_connections = set()
