@@ -13,6 +13,7 @@ def get_active_switches(client, pattern=None):
             for serial, details in notif["updates"].items():
                 if details["deviceType"] == "EOS" and details["status"] == "active" and (pattern is None or re.match(pattern, details["hostname"])):
                     switches[serial] = details
+
     return switches
 
 def get_lldp_neighbors(client, device_id):
@@ -104,14 +105,19 @@ def create_yaml_topology(switches, lldp_data):
     with open('topology.yaml', 'w') as file:
         yaml.dump(final_topology, file, default_flow_style=False)
 
-
 def main(apiserver_addr, token=None, certs=None, ca=None, key=None, pattern=None):
+
+    raw_responses = []
+
     with GRPCClient(apiserver_addr, token=token, key=key, ca=ca, certs=certs) as client:
         switches = get_active_switches(client, pattern)
+
         lldp_data = {}
         for serial in switches.keys():
             lldp_data[serial] = get_lldp_neighbors(client, serial)
+        
         create_yaml_topology(switches, lldp_data)
+
     return 0
 
 if __name__ == "__main__":
